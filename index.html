@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Development Proposal - Asthika Samaj, Dubai</title>
+    <!-- Google Fonts: Inter for headings, Nunito Sans for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Nunito+Sans:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ...[All CSS as in previous answer, unchanged]... */
+        :root {
+            --primary: #3730A3;
+            --primary-end: #6366F1;
+            --accent: #F85A40;
+            --surface: #fff;
+            --border: #e5e7eb;
+            --radius: 24px;
+            --heading-left-gap: 28px;
+            --heading-font: 'Inter', 'Segoe UI', Arial, sans-serif;
+            --body-font: 'Nunito Sans', 'Segoe UI', Arial, sans-serif;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body {
+            width: 100%;
+            min-width: 0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: var(--body-font);
+            background: linear-gradient(120deg, #F3F4F8 85%, #E9EDFB 100%);
+            color: #23223b;
+            font-size: 18px;
+            line-height: 1.75;
+            letter-spacing: 0.02em;
+        }
+        h1, h2, h3, h4, h5, h6, .nav-logo, .section-title, .feature-title, .comp-title, .phase-title, .timeline-phase-title {
+            font-family: var(--heading-font);
+            letter-spacing: -0.5px;
+        }
+        .nav-menu {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 2000;
+            background: linear-gradient(90deg, #3730A3 80%, #6366F1 100%);
+            box-shadow: 0 2px 16px rgba(55,48,163,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 980px;
+        }
+        .nav-logo {
+            font-size: 2.05rem;
+            font-weight: 900;
+            color: #F85A40;
+            text-decoration: none;
+            letter-spacing: -1.5px;
+            margin: 5px 0 0 0;
+            text-align: center;
+            line-height: 1;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin: 0 0 3px 0;
+            padding: 0;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .nav-links a {
+            color: #fff;
+            opacity: 1;
+            font-weight: 900;
+            font-size: 1.11rem;
+            padding: 7px 0 7px 0;
+            border: none;
+            background: none;
+            text-decoration: none;
+            transition: color 0.2s;
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            letter-spacing: 0;
+        }
+        .nav-links a.active, .nav-links a:focus, .nav-links a:active, .nav-links a[aria-current="page"] {
+            color: var(--accent);
+            outline: none;
+        }
+        .nav-links a.active::after, .nav-links a:focus::after, .nav-links a:active::after, .nav-links a[aria-current="page"]::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            border-radius: 2px;
+            background: var(--accent);
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+        }
+        .nav-links a:not(.active):hover {
+            color: #fff;
+            opacity: 0.8;
+        }
+        .container {
+            max-width: 980px;
+            width: 100%;
+            margin: 100px auto 50px auto;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: 0 8px 32px rgba(55,48,163,0.07);
+            position: relative;
+        }
+        .cover-section {
+            padding: 32px 16px 20px 16px;
+            background: linear-gradient(110deg, #f4f6fd 80%, #e5e8ff 100%);
+            border-bottom: 1.5px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .cover-title {
+            font-size: 2.05rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.3em;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        .cover-subtitle {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: #6366F1;
+            margin-bottom: 0.7em;
+            letter-spacing: 0.12em;
+        }
+        .cover-request-info {
+            background: #fff;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-top: 6px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 12px rgba(55,48,163,0.05);
+            text-align: left;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.01rem;
+            color: #6366F1;
+        }
+        .executive-summary {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            background: linear-gradient(100deg, #EEF1FA 82%, #E9EDFB 100%);
+            border-radius: 24px;
+            box-shadow: 0 4px 32px rgba(55,48,163,0.06);
+            padding: 36px 34px;
+            margin: 40px 16px 48px 16px;
+            border-left: 7px solid var(--primary);
+        }
+        .exec-icon { flex-shrink: 0; width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #6366F1 60%, #EEF1FA 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(55,48,163,0.09);}
+        .exec-icon svg { width: 47px; height: 47px;}
+        .exec-main { flex: 1; }
+        .exec-main h3 { color: var(--primary); font-size: 1.22rem; font-weight: 900; margin-bottom: 10px;}
+        .exec-main p { color: #353555; font-size: 1.09rem; margin-bottom: 0;}
+        .exec-highlights { display: flex; gap: 36px; margin-top: 30px;}
+        .exec-highlights > div { background: #fff; border-radius: 14px; min-width: 90px; padding: 13px 13px 10px 13px; box-shadow: 0 1px 8px rgba(55,48,163,0.03); text-align: center; border: 1.5px solid #e6e8f6;}
+        .highlight-value { font-size: 1.5rem; font-weight: 900; color: var(--primary);}
+        .highlight-label { font-size: 0.99rem; color: #6366F1; margin-top: 2px;}
+        .section-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            border-left: 7px solid var(--accent);
+            padding-left: 0;
+            margin-bottom: 36px;
+            margin-top: 0;
+            line-height: 1.2;
+            background: linear-gradient(90deg, #EEF1FA 55%, transparent 100%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: sticky;
+            left: 0;
+            right: 0;
+            top: 70px;
+            z-index: 99;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .section-title .icon {
+            font-size: 1.7em;
+            background: #fff3f0;
+            color: var(--accent);
+            border-radius: 50%;
+            padding: 11px;
+            margin-right: 10px;
+            margin-left: var(--heading-left-gap);
+            box-shadow: 0 2px 9px rgba(55,48,163,0.11);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .section-title span.title-text {
+            margin-left: 8px;
+        }
+        @media (max-width: 700px) {
+            .section-title { top: 80px; font-size: 1.3rem;}
+            .section-title .icon { font-size: 1.15em; padding: 8px; margin-left: 7px; }
+        }
+        .techstack-section {
+            background: #fff;
+            border: 1.5px solid #e6e8f6;
+            border-radius: 14px;
+            box-shadow: 0 1px 8px rgba(55,48,163,0.04);
+            padding: 30px 16px 22px 16px;
+            margin-bottom: 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .techstack-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+        .techstack-table th, .techstack-table td {
+            padding: 12px 10px;
+            text-align: left;
+            font-size: 1.02rem;
+        }
+        .techstack-table th {
+            color: var(--accent);
+            font-size: 1.08rem;
+            font-weight: 900;
+            background: #fdf5f3;
+            border-bottom: 2px solid #eee;
+        }
+        .techstack-table tr:not(:last-child) td {
+            border-bottom: 1px solid #f1f1f7;
+        }
+        .techstack-table td {
+            color: #2e2e48;
+            vertical-align: top;
+        }
+        .techstack-table .feature-list {
+            padding-left: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .techstack-table .feature-list li {
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+        }
+        .techstack-table .feature-list li::before {
+            content: '•';
+            color: var(--accent);
+            margin-right: 7px;
+        }
+        .techstack-note { color: #6366F1; font-size: 0.99rem; margin-top: 17px; margin-bottom: 0;}
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+            gap: 32px;
+        }
+        .feature-box {
+            background: #fff;
+            border-radius: 15px;
+            border: 1.5px solid #e6e8f6;
+            box-shadow: 0 1px 7px rgba(55,48,163,0.04);
+            padding: 25px 20px 16px 24px;
+            transition: box-shadow .22s, transform .15s;
+            position: relative;
+        }
+        .feature-box:hover { box-shadow: 0 7px 28px rgba(63,75,175,0.10); transform: translateY(-3px) scale(1.025);}
+        .feature-header { display: flex; align-items: center; gap: 12px; margin-bottom: 13px;}
+        .feature-icon { width: 34px; height: 34px; background: linear-gradient(135deg, #E9EDFB 70%, #fff 100%); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2em;}
+        .feature-title { font-size: 1.1rem; font-weight: 900; color: var(--primary);}
+        .feature-box ul { margin: 0; padding-left: 22px;}
+        .feature-box li { color: #414176; font-size: 1rem; margin-bottom: 7px; list-style: disc;}
+        .pricing-container { margin-top: 22px; }
+        .pricing-tabs {
+            display: flex;
+            border-radius: 13px;
+            overflow: hidden;
+            margin-bottom: 28px;
+            border: 1.5px solid #e6e8f6;
+            background: #f6f8fa;
+        }
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 19px 0;
+            font-size: 1.12rem;
+            font-weight: 900;
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.2s;
+            border-bottom: 3px solid transparent;
+            letter-spacing: 0.3px;
+        }
+        .tab-btn.active {
+            background: #fff;
+            color: var(--accent);
+            border-bottom: 3.5px solid var(--accent);
+            box-shadow: 0 2px 14px rgba(55,48,163,0.04);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .component-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .component-card {
+            flex: 1 0 280px;
+            background: #fff;
+            border-radius: 18px;
+            border: 2px solid #e6e8f6;
+            box-shadow: 0 2px 18px rgba(55,48,163,0.07);
+            padding: 21px 18px 13px 24px;
+            margin-bottom: 0;
+            min-width: 260px;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            transition: box-shadow .18s, transform .18s, border .18s;
+            cursor: pointer;
+        }
+        .component-card:hover {
+            border: 2px solid var(--accent);
+            box-shadow: 0 6px 28px 0 rgba(55,48,163,0.12);
+            transform: translateY(-4px) scale(1.035);
+        }
+        .component-card .comp-title {
+            font-size: 1.08rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .component-card .comp-desc {
+            color: #45477c;
+            font-size: 0.98rem;
+            margin-bottom: 8px;
+        }
+        .component-card .comp-price {
+            margin-top: 7px;
+            font-size: 1.12rem;
+            color: var(--accent);
+            font-weight: 900;
+            align-self: flex-end;
+        }
+        .component-totals {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 22px 0 22px 0;
+            align-items: center;
+            padding-left: 10px;
+        }
+        .component-totals > div {
+            background: #f5f5f9;
+            border-radius: 16px;
+            padding: 13px 30px;
+            font-weight: 900;
+            font-size: 1.16rem;
+            color: var(--primary);
+            box-shadow: 0 1px 8px rgba(55,48,163,.07);
+        }
+        .component-totals .total {
+            background: #fff5f3;
+            color: var(--accent);
+        }
+        .component-totals .deduction {
+            background: #eafbea;
+            color: #148436;
+        }
+        .special-offer {
+            background: var(--accent);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 48px 0 55px 0;
+            font-weight: 900;
+            font-size: 1.13rem;
+            letter-spacing: 0.4px;
+            box-shadow: 0 3px 13px rgba(248,90,64,0.11);
+            position: relative;
+        }
+        #timeline {
+            margin-top: 54px;
+        }
+        .phase-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-top: 26px;
+        }
+        .phase-card {
+            background: #fff;
+            border-left: 6px solid var(--accent);
+            border-radius: 18px;
+            box-shadow: 0 4px 22px rgba(55,48,163,0.07);
+            padding: 28px 30px 20px 34px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        .phase-badge {
+            flex-shrink:0;
+            width: 54px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .phase-number {
+            background: var(--primary);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.17rem;
+            margin-bottom: 8px;
+        }
+        .phase-duration { color: #6b7693; font-size: 0.98rem; font-weight: 700;}
+        .phase-details { flex:1; margin-left: 24px;}
+        .phase-title { font-size: 1.19rem; font-weight: 900; color: var(--primary); margin-bottom: 5px;}
+        .phase-desc { color: #464775; font-size: 1.07rem; margin-bottom: 10px;}
+        .phase-price { font-size: 1.13rem; font-weight: 900; color: var(--accent);}
+        .timeline-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px 38px;
+            margin-top: 25px;
+            margin-bottom: 20px;
+            padding-left: 0;
+            position: static;
+        }
+        .timeline-phase { position: relative; display: flex; flex-direction: column; align-items: flex-start;}
+        .timeline-dot {
+            width: 46px; height: 46px;
+            background: #fff;
+            border: 3.5px solid var(--primary);
+            border-radius: 50%;
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 1.16rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: -23px;
+            z-index: 3;
+            margin-left: 18px;
+            box-shadow: 0 2px 9px rgba(55,48,163,0.07);
+            position: absolute;
+            left: 0;
+            top: 22px;
+        }
+        .timeline-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 1.5px 12px rgba(55,48,163,0.04);
+            border: 1.5px solid #e6e8f6;
+            padding: 22px 26px 18px 55px;
+            width: 100%;
+            min-height: 116px;
+            position: relative;
+        }
+        .timeline-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 9px;}
+        .timeline-phase-icon { font-size: 1.45rem; color: var(--accent); background: #fdf4f0; border-radius: 50%; padding: 6px;}
+        .timeline-phase-title { font-weight: 900; color: var(--primary); font-size: 1.09rem;}
+        .timeline-phase-desc { color: #464775; margin-bottom: 7px; font-size: 1rem;}
+        .timeline-phase-duration { color: var(--primary); font-weight: 700; font-size: 0.99rem;}
+        @media (max-width: 900px) { .timeline-modern { grid-template-columns: 1fr; } .phase-cards { flex-direction: column; } }
+        @media (max-width: 700px) { .container { margin: 90px 0 30px 0; max-width: 100vw; } .timeline-modern { grid-template-columns: 1fr; } .phase-cards { flex-direction: column; } }
+        @media (max-width: 500px) { .timeline-card { padding: 12px 8px 12px 54px; } .phase-card {flex-direction: column; padding: 18px 8px 16px 15px;} .phase-details {margin-left:0;} .phase-badge {flex-direction: row;width:auto;}}
+        .contact-section {
+            background: linear-gradient(120deg, #f6f8ff 70%, #e9edfb 100%);
+            padding: 38px 24px 36px 24px;
+            border-radius: 16px;
+            margin: 0 0 36px 0;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .contact-grid { display: flex; justify-content: center; gap: 32px; margin-top: 0;}
+        .contact-item { background: #fff; padding: 21px 30px; border-radius: 13px; box-shadow: 0 1px 7px rgba(55,48,163,0.03); display: flex; flex-direction: column; align-items: center;}
+        .contact-icon { font-size: 1.5rem; margin-bottom: 8px; color: var(--primary);}
+        .contact-item h4 { color: var(--primary); font-size: 1.01rem; font-weight: 900; margin-bottom: 4px;}
+        .contact-item p { font-size: 1rem; color: #4e5871; margin-bottom: 0;}
+        .footer {
+            background: var(--primary);
+            color: #fff;
+            padding: 24px 40px;
+            text-align: center;
+            font-size: 1rem;
+            border-top: 2.5px solid var(--accent);
+            border-radius: 0 !important;
+            width: 100%;
+            max-width: 100vw;
+            margin: 0 auto 0 auto;
+            box-sizing: border-box;
+        }
+        .footer p { margin: 6px 0; opacity: 0.95; font-weight: 500; }
+        /* PDF Export button at bottom right */
+        .export-pdf {
+            position: fixed;
+            right: 28px;
+            bottom: 28px;
+            width: 54px;
+            height: 54px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 1.28rem;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 4px 20px rgba(55,48,163,0.19);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s, box-shadow 0.15s, width 0.23s;
+            overflow: hidden;
+        }
+        .export-pdf .pdf-label {
+            opacity: 0;
+            margin-left: 0;
+            font-size: 1rem;
+            white-space: nowrap;
+            color: #fff;
+            transition: opacity .23s, margin-left .23s;
+            font-weight: 900;
+            pointer-events: none;
+        }
+        .export-pdf:hover, .export-pdf:focus {
+            background: var(--accent);
+            width: 155px;
+            border-radius: 50px;
+        }
+        .export-pdf:hover .pdf-label, .export-pdf:focus .pdf-label {
+            opacity: 1;
+            margin-left: 13px;
+            pointer-events: auto;
+        }
+        .export-pdf svg {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            fill: #fff;
+            margin-left: 2px;
+        }
+        @media (max-width: 700px) {
+            .export-pdf { right: 10px; bottom: 10px; width: 44px; height: 44px; }
+            .export-pdf svg { width: 21px; height: 21px; }
+        }
+    </style>
+</head>
+<body>
+    <button class="export-pdf" onclick="exportToPDF()" title="Export to PDF">
+        <svg viewBox="0 0 24 24"><path d="M19 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-3 1.5V8a1 1 0 0 0 1 1h4.5L16 3.5zM8 4h8v4a3 3 0 0 0 3 3v11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm6 14H10v-2h4v2zm0-4H10v-2h4v2z"/></svg>
+        <span class="pdf-label">Export to PDF</span>
+    </button>
+    <nav class="nav-menu">
+        <div class="nav-bar">
+            <div class="nav-logo">DESIGNSFORGE</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#techstack">Tech Stack</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- COVER SECTION -->
+        <div class="cover-section" id="overview">
+            <div class="cover-title">Website Development Proposal</div>
+            <div class="cover-subtitle">Asthika Samaj, Dubai</div>
+            <div class="cover-request-info">
+                <div><strong>Client:</strong> Asthika Samaj, Dubai</div>
+                <div><strong>Date:</strong> July 12, 2025</div>
+                <div><strong>Reference:</strong> Based on RFP & Business Requisition Document (received July 11)</div>
+                <div><strong>Submission Deadline:</strong> July 18, 2025</div>
+            </div>
+        </div>
+        <!-- EXECUTIVE SUMMARY -->
+        <div class="executive-summary">
+            <div class="exec-icon">
+                <svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#F3F4F8" stroke="#3730A3" stroke-width="3"/><path d="M17 36l8-12 8 12" stroke="#6366F1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="24" r="3" fill="#F85A40"/></svg>
+            </div>
+            <div class="exec-main">
+                <h3>Executive Summary</h3>
+                <p>
+                    With over 18 years in web and application development, I have delivered numerous custom platforms for communities, professional associations, and organizations worldwide.<br><br>
+                    My approach for Asthika Samaj, Dubai is to deliver a secure, modern, and scalable website tailored for your specific requirements, with a focus on engaging user experience, streamlined operations, and digital empowerment of your community.<br><br>
+                    The project will be carefully planned and executed, including requirement analysis, user-centric design, robust development, and thorough testing.
+                </p>
+                <div class="exec-highlights">
+                    <div>
+                        <div class="highlight-value">12–16</div>
+                        <div class="highlight-label">Weeks Timeline</div>
+                    </div>
+                    <div>
+                        <div class="highlight-value">RFP</div>
+                        <div class="highlight-label">Based Project</div>
+                    </div>
+                    <div>
+                        <div class="highlight-value">100+</div>
+                        <div class="highlight-label">Web Projects Delivered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- TECH STACK -->
+        <div id="techstack">
+            <h2 class="section-title"><span class="icon">🛠️</span><span class="title-text">Tech Stack</span></h2>
+            <div class="techstack-section">
+                <table class="techstack-table">
+                    <tr>
+                        <th>Frontend</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>React.js (Next.js for SSR/SEO)</li>
+                                <li>TailwindCSS, Material UI</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Backend</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>Node.js (Express) or Python (Django/FastAPI)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Database</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>PostgreSQL or MongoDB</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Authentication</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>OAuth2, JWT</li>
+                                <li>Google/Microsoft SSO</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>UI/UX</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>Figma, Zeplin</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>DevOps</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>GitHub Actions, Docker</li>
+                                <li>AWS/DigitalOcean</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Integrations</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>WhatsApp API, SendGrid</li>
+                                <li>AI Chatbot (OpenAI)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Security</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>SSL, OWASP, GDPR Compliance</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Analytics</th>
+                        <td>
+                            <ul class="feature-list">
+                                <li>Google Analytics (GA4)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                <div class="techstack-note">
+                    <strong>Note:</strong> Tool selection and architecture will be finalized based on your preferences and integration needs.
+                </div>
+            </div>
+        </div>
+        <!-- FEATURES -->
+        <section id="features">
+            <h2 class="section-title"><span class="icon">🎯</span><span class="title-text">Features</span></h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-header">
+                        <div class="feature-icon">👥</div>
+                        <div class="feature-title">Member Management System</div>
+                    </div>
+                    <ul>
+                        <li>Social login integration</li>
+                        <li>Comprehensive profile management</li>
+                        <li>Family tree connections</li>
+                        <li>Nakshatram & Gothram tracking</li>
+                        <li>Multi-location address book</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-header">
+                        <div class="feature-icon">📅</div>
+                        <div class="feature-title">Event & Festival Platform</div>
+                    </div>
+                    <ul>
+                        <li>Interactive calendar system</li>
+                        <li>Online ticketing & RSVP</li>
+                        <li>Media gallery integration</li>
+                        <li>AI-powered photo tagging</li>
+                        <li>Live streaming capabilities</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-header">
+                        <div class="feature-icon">💬</div>
+                        <div class="feature-title">Community Features</div>
+                    </div>
+                    <ul>
+                        <li>Classifieds marketplace</li>
+                        <li>Job portal with filters</li>
+                        <li>Digital library system</li>
+                        <li>Volunteer management</li>
+                        <li>Donation tracking</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-header">
+                        <div class="feature-icon">🤖</div>
+                        <div class="feature-title">Advanced Technology</div>
+                    </div>
+                    <ul>
+                        <li>AI Chatbot "Virtual Ambi"</li>
+                        <li>WhatsApp automation</li>
+                        <li>CRM integration</li>
+                        <li>Multi-language support</li>
+                        <li>Advanced analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- PRICING -->
+        <section id="pricing">
+            <h2 class="section-title"><span class="icon">
+                <svg width="34" height="34" viewBox="0 0 34 34"><g><ellipse cx="17" cy="17" rx="17" ry="17" fill="#f4f6fd"/><path d="M10.5 12.5L17 6l6.5 6.5-6.5 15-6.5-15z" fill="#6366F1"/><path d="M6 13h22l-11 13z" fill="#48d0fa"/></g></svg>
+            </span><span class="title-text">Pricing</span></h2>
+            <div class="pricing-container">
+                <div class="pricing-tabs">
+                    <button class="tab-btn active" onclick="showTab('component', event)">Component-wise</button>
+                    <button class="tab-btn" onclick="showTab('phase', event)">Phase-wise</button>
+                </div>
+                <div id="component" class="tab-content active">
+                    <div class="component-cards">
+                        <div class="component-card">
+                            <div class="comp-title">Core Website Development</div>
+                            <div class="comp-desc">Responsive design, CMS setup, basic pages</div>
+                            <div class="comp-price">AED 8,000</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">Member Management System</div>
+                            <div class="comp-desc">Registration, profiles, directory, admin panel</div>
+                            <div class="comp-price">AED 6,500</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">Event Management Module</div>
+                            <div class="comp-desc">Calendar, ticketing, RSVP, notifications</div>
+                            <div class="comp-price">AED 5,500</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">Classifieds & Job Portal</div>
+                            <div class="comp-desc">Listings, search, filters, moderation</div>
+                            <div class="comp-price">AED 4,500</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">Digital Library</div>
+                            <div class="comp-desc">Document management, categories, search</div>
+                            <div class="comp-price">AED 3,000</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">AI Chatbot Integration</div>
+                            <div class="comp-desc">Custom training, 24/7 support, escalation</div>
+                            <div class="comp-price">AED 7,500</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">WhatsApp & Email Automation</div>
+                            <div class="comp-desc">Bulk messaging, templates, scheduling</div>
+                            <div class="comp-price">AED 4,000</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">CRM Integration</div>
+                            <div class="comp-desc">Member database, workflows, reporting</div>
+                            <div class="comp-price">AED 3,500</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">Security Implementation</div>
+                            <div class="comp-desc">SSL, firewall, GDPR compliance, backups</div>
+                            <div class="comp-price">AED 3,000</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">Media Gallery & Integration</div>
+                            <div class="comp-desc">Google Photos, YouTube, AI tagging</div>
+                            <div class="comp-price">AED 2,500</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">Multi-language Support</div>
+                            <div class="comp-desc">4 languages (English, Tamil, Malayalam, Hindi)</div>
+                            <div class="comp-price">AED 3,500</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="comp-title">Training & Documentation</div>
+                            <div class="comp-desc">Admin training, user guides, video tutorials</div>
+                            <div class="comp-price">AED 2,000</div>
+                        </div>
+                    </div>
+                    <div class="component-totals">
+                        <div class="total">Total: AED 53,500</div>
+                        <div class="deduction">Deduction (20%): AED 10,700</div>
+                        <div class="total">Final Price: AED 42,800</div>
+                    </div>
+                    <div class="special-offer">
+                        <strong>Special Launch Offer:</strong> 20% Discount – <strong>Final Price: AED 42,800</strong>
+                    </div>
+                </div>
+                <div id="phase" class="tab-content">
+                    <div class="phase-cards">
+                        <div class="phase-card">
+                            <div class="phase-badge">
+                                <div class="phase-number">1</div>
+                                <div class="phase-duration">2 weeks</div>
+                            </div>
+                            <div class="phase-details">
+                                <div class="phase-title">Discovery & Design</div>
+                                <div class="phase-desc">Requirements analysis, wireframing, UI/UX design, client approval</div>
+                                <div class="phase-price">AED 8,560</div>
+                            </div>
+                        </div>
+                        <div class="phase-card">
+                            <div class="phase-badge">
+                                <div class="phase-number">2</div>
+                                <div class="phase-duration">3 weeks</div>
+                            </div>
+                            <div class="phase-details">
+                                <div class="phase-title">Core Development</div>
+                                <div class="phase-desc">Website structure, member system, basic functionalities</div>
+                                <div class="phase-price">AED 10,700</div>
+                            </div>
+                        </div>
+                        <div class="phase-card">
+                            <div class="phase-badge">
+                                <div class="phase-number">3</div>
+                                <div class="phase-duration">4 weeks</div>
+                            </div>
+                            <div class="phase-details">
+                                <div class="phase-title">Feature Implementation</div>
+                                <div class="phase-desc">Events, classifieds, job portal, digital library</div>
+                                <div class="phase-price">AED 12,840</div>
+                            </div>
+                        </div>
+                        <div class="phase-card">
+                            <div class="phase-badge">
+                                <div class="phase-number">4</div>
+                                <div class="phase-duration">2 weeks</div>
+                            </div>
+                            <div class="phase-details">
+                                <div class="phase-title">Advanced Features</div>
+                                <div class="phase-desc">AI chatbot, integrations, automation setup</div>
+                                <div class="phase-price">AED 6,420</div>
+                            </div>
+                        </div>
+                        <div class="phase-card">
+                            <div class="phase-badge">
+                                <div class="phase-number">5</div>
+                                <div class="phase-duration">2 weeks</div>
+                            </div>
+                            <div class="phase-details">
+                                <div class="phase-title">Testing & Launch</div>
+                                <div class="phase-desc">Quality assurance, security testing, deployment</div>
+                                <div class="phase-price">AED 4,280</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TIMELINE -->
+        <section id="timeline">
+            <h2 class="section-title"><span class="icon">🚀</span><span class="title-text">Project Timeline</span></h2>
+            <div class="timeline-modern">
+                <div class="timeline-phase">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-card">
+                        <div class="timeline-card-header">
+                            <span class="timeline-phase-icon">🎨</span>
+                            <span class="timeline-phase-title">Discovery & Design</span>
+                        </div>
+                        <div class="timeline-phase-content">
+                            <div class="timeline-phase-desc">Requirements analysis, wireframing, UI/UX design, client approval</div>
+                            <div class="timeline-phase-duration"><span>⏱️</span> 2 weeks</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-phase">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-card">
+                        <div class="timeline-card-header">
+                            <span class="timeline-phase-icon">💻</span>
+                            <span class="timeline-phase-title">Core Development</span>
+                        </div>
+                        <div class="timeline-phase-content">
+                            <div class="timeline-phase-desc">Website structure, member system, basic functionalities</div>
+                            <div class="timeline-phase-duration"><span>⏱️</span> 3 weeks</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-phase">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-card">
+                        <div class="timeline-card-header">
+                            <span class="timeline-phase-icon">⚙️</span>
+                            <span class="timeline-phase-title">Feature Implementation</span>
+                        </div>
+                        <div class="timeline-phase-content">
+                            <div class="timeline-phase-desc">Events, classifieds, job portal, digital library</div>
+                            <div class="timeline-phase-duration"><span>⏱️</span> 4 weeks</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-phase">
+                    <div class="timeline-dot">4</div>
+                    <div class="timeline-card">
+                        <div class="timeline-card-header">
+                            <span class="timeline-phase-icon">🔧</span>
+                            <span class="timeline-phase-title">Advanced Features</span>
+                        </div>
+                        <div class="timeline-phase-content">
+                            <div class="timeline-phase-desc">AI chatbot, integrations, automation setup</div>
+                            <div class="timeline-phase-duration"><span>⏱️</span> 2 weeks</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-phase">
+                    <div class="timeline-dot">5</div>
+                    <div class="timeline-card">
+                        <div class="timeline-card-header">
+                            <span class="timeline-phase-icon">🎯</span>
+                            <span class="timeline-phase-title">Testing & Launch</span>
+                        </div>
+                        <div class="timeline-phase-content">
+                            <div class="timeline-phase-desc">Quality assurance, security testing, deployment, training</div>
+                            <div class="timeline-phase-duration"><span>⏱️</span> 2 weeks</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CONTACT -->
+        <div id="contact">
+            <h2 class="section-title"><span class="icon">📞</span><span class="title-text">Contact</span></h2>
+            <div class="contact-section">
+                <h3>Ready to Transform Your Digital Presence?</h3>
+                <p>Let's build something extraordinary together for the Asthika Samaj community.</p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <h4>Call Us</h4>
+                        <p>+47 40975201</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <h4>Email Us</h4>
+                        <p>karthic2914@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p><strong>DESIGNSFORGE</strong> – Crafted for Asthika Samaj, Dubai</p>
+        <p>© 2025. All rights reserved.</p>
+    </div>
+    <script>
+        function scrollToSection(targetId) {
+            const navMenu = document.querySelector('.nav-menu');
+            let offset = navMenu.offsetHeight;
+            if(window.innerWidth > 700) offset += 8;
+            const section = document.querySelector(targetId);
+            if (section) {
+                const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        }
+        function setActiveNavOnScroll() {
+            let current = '';
+            const navMenu = document.querySelector('.nav-menu');
+            let offset = navMenu.offsetHeight;
+            if(window.innerWidth > 700) offset += 8;
+            const sections = document.querySelectorAll('section[id], div[id]');
+            const scrollY = window.scrollY || window.pageYOffset;
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - offset - 10;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', setActiveNavOnScroll);
+        window.addEventListener('resize', setActiveNavOnScroll);
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                scrollToSection(this.getAttribute('href'));
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        function showTab(tabName, event) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            if(event) event.target.classList.add('active');
+        }
+        function exportToPDF() {
+            const exportBtn = document.querySelector('.export-pdf');
+            const navMenu = document.querySelector('.nav-menu');
+            if (exportBtn) exportBtn.style.display = 'none';
+            if (navMenu) navMenu.style.display = 'none';
+            window.print();
+            setTimeout(() => {
+                if (exportBtn) exportBtn.style.display = 'flex';
+                if (navMenu) navMenu.style.display = 'flex';
+            }, 1000);
+        }
+        setActiveNavOnScroll();
+    </script>
+</body>
+</html>
